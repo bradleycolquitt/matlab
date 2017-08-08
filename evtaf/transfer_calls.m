@@ -22,13 +22,14 @@ fprintf('\nGetting directory info...')
 
 %gets current working directory
 folder = pwd;
+folder
 %finds dashes to pull out date and bird name later
 dashes = strfind(folder,'/');
 
 %bird name
 % birdname = folder(dashes(4)+1:dashes(5)-1);
-birdname = folder(dashes(end-2)+1:dashes(end-1)-1);
-
+birdname = folder(dashes(end-1)+1:dashes(end)-1);
+birdname
 
 %Calculating the date
 % month = folder(dashes(5)+1:dashes(5)+2);
@@ -37,13 +38,16 @@ birdname = folder(dashes(end-2)+1:dashes(end-1)-1);
 %month = folder(dashes(end)+1:dashes(end)+2);
 %day = folder(dashes(end)+3:dashes(end)+4);
 %year = ['20' folder(dashes(end)+5:dashes(end)+6)];
-date_ind = dashes(end-1);
-month = folder(date_ind+1:date_ind+2);
-day = folder(date_ind+3:date_ind+4);
-year = ['20' folder(date_ind+5:date_ind+6)];
-
-date_folder = datenum(str2double(year), str2double(month), str2double(day));
-date_folder = datestr(date_folder,'ddmmmyyyy');
+date_ind = dashes(end);
+year = [folder(date_ind+1:date_ind+4)];
+month = folder(date_ind+6:date_ind+7);
+day = folder(date_ind+8:date_ind+9);
+month
+%date_folder = datenum(str2double(year), str2double(month), str2double(day));
+%date_folder
+%date_folder = datestr(date_folder,'yyyy-mm-dd');
+date_folder = folder(dashes(end)+1:end)
+date_folder
 
 fprintf('done!\n')
 
